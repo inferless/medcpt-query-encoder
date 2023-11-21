@@ -1,0 +1,1 @@
+# MedCPT-Query-Encoder
