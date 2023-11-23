@@ -47,7 +47,7 @@ The following is a sample Input and Output JSON for this model which you can use
 ```
 
 ### Output
-```
+```json
 {
   "outputs": [
     {
