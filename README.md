@@ -34,7 +34,7 @@ The following is a sample Input and Output JSON for this model which you can use
       "name": "queries",
       "datatype": "BYTES",
       "shape": [
-        -1
+        3
       ],
       "data": [
         "diabetes treatment",
