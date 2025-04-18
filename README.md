@@ -1,68 +1,35 @@
 # MedCPT-Query-Encoder
 MedCPT generates embeddings of biomedical texts that can be used for semantic search (dense retrieval). MedCPT Query Encoder: compute the embeddings of short texts (e.g., questions, search queries, sentences). In this template, we will import the **MedCPT Query Encoder** on the Inferless Platform.
 
----
-## Prerequisites
-- **Git**. You would need git installed on your system if you wish to customize the repo after forking.
-- **Python>=3.8**. You would need Python to customize the code in the app.py according to your needs.
-- **Curl**. You would need Curl if you want to make API calls from the terminal itself.
-
----
-## Quick Start
-Here is a quick start to help you get up and running with this template on Inferless.
+## TL;DR:
+- Dependencies defined in `inferless-runtime-config.yaml`.
+- GitHub/GitLab template creation with `app.py`, `inferless-runtime-config.yaml` and `inferless.yaml`.
+- Model class in `app.py` with `initialize`, `infer`, and `finalize` functions.
+- Custom runtime creation with necessary system and Python packages.
+- Model import via GitHub with `input_schema.py` file.
+- Recommended GPU: NVIDIA A100.
+- Custom runtime selection in advanced configuration.
+- Final review and deployment on the Inferless platform.
 
 ### Fork the Repository
 Get started by forking the repository. You can do this by clicking on the fork button in the top right corner of the repository page.
 
 This will create a copy of the repository in your own GitHub account, allowing you to make changes and customize it according to your needs.
 
+### Create a Custom Runtime in Inferless
+To access the custom runtime window in Inferless, simply navigate to the sidebar and click on the Create new Runtime button. A pop-up will appear.
+
+Next, provide a suitable name for your custom runtime and proceed by uploading the **inferless-runtime-config.yaml** file given above. Finally, ensure you save your changes by clicking on the save button.
+
 ### Import the Model in Inferless
-Log in to your inferless account, select the workspace you want the model to be imported into and click the Add Model button.
+Log in to your inferless account, select the workspace you want the model to be imported into and click the `Add a custom model` button.
 
-Select the PyTorch as framework and choose **Repo(custom code)** as your model source and use the forked repo URL as the **Model URL**.
+- Select `Github` as the method of upload from the Provider list and then select your Github Repository and the branch.
+- Choose the type of machine, and specify the minimum and maximum number of replicas for deploying your model.
+- Configure Custom Runtime ( If you have pip or apt packages), choose Volume, Secrets and set Environment variables like Inference Timeout / Container Concurrency / Scale Down Timeout
+- Once you click “Continue,” click Deploy to start the model import process.
 
-Enter all the required details to Import your model. Refer [this link](https://docs.inferless.com/integrations/github-custom-code) for more information on model import.
-
-The following is a sample Input and Output JSON for this model which you can use while importing this model on Inferless.
-
-
-### Input
-```json
-{
-  "inputs": [
-    {
-      "name": "queries",
-      "datatype": "BYTES",
-      "shape": [
-        3
-      ],
-      "data": [
-        "diabetes treatment",
-        "How to treat diabetes?",
-        "A 45-year-old man presents with increased thirst and frequent urination over the past 3 months."
-      ]
-    }
-  ]
-}
-```
-
-### Output
-```json
-{
-  "outputs": [
-    {
-      "name": "embeds",
-      "datatype": "FP32",
-      "shape": [
-        -1
-      ],
-      "data": [
-        0.0413
-      ]
-    }
-  ]
-}
-```
+Enter all the required details to Import your model. Refer [this link](https://docs.inferless.com/integrations/git-custom-code/git--custom-code) for more information on model import.
 
 ---
 ## Curl Command
